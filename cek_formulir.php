@@ -1,20 +1,21 @@
 <?php
-/**
- * Berikah kondisi
- * Jika data 'username' ditemukan maka tampilkan
- * Jika data tidak ada maka tampilkan pesan 'Data Kosong'
- */
-if ( isset($_POST['username']) ) {
-    echo $_POST['username'];
-    echo $_POST['password'];
-} else {
-    echo 'Dilarang dibuka langsung!';
-}
+$username = 'siswa';
+$password = '12345';
 
-/**
- * PERTANYAAN:
- * Tambahkan tombol untuk kembali
- * ke formulir sebelumnya
- */
-?>
-<a href="formulir.php">Kembali ke formulir</a>
+if ( isset($_POST['username']) ) {
+    if ( $_POST['username'] === $username ) {
+        // echo 'username benar';
+        if ( $_POST['password'] === $password ) {
+            // echo 'password benar';
+            setcookie('login', true, time() + 3600);
+            setcookie('nama', 'Nama Siswa', time() + 3600);
+            header('Location: dashboard.php');
+        } else {
+            echo 'password salah';
+        }
+    } else {
+        echo 'username salah';
+    }
+} else {
+    header('Location: formulir.php');
+}
