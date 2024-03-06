@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 06, 2024 at 02:02 AM
+-- Generation Time: Feb 28, 2024 at 03:32 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -20,6 +20,8 @@ SET time_zone = "+00:00";
 --
 -- Database: `xi_a`
 --
+CREATE DATABASE IF NOT EXISTS `xi_a` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+USE `xi_a`;
 
 -- --------------------------------------------------------
 
@@ -30,20 +32,19 @@ SET time_zone = "+00:00";
 CREATE TABLE `users` (
   `id` int(11) NOT NULL,
   `username` varchar(32) NOT NULL,
-  `password` varchar(32) NOT NULL,
-  `nama` varchar(128) DEFAULT NULL
+  `password` varchar(32) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `username`, `password`, `nama`) VALUES
-(1, 'siswa', '12345', 'Nama Siswa'),
-(2, 'guru', '12345', 'Guru Mata Pelajaran'),
-(3, 'bukan_ajis', '12345', 'Kembaran Ajis'),
-(4, 'mario', '12345', 'Tukang Ledeng'),
-(5, 'luigi', 'asdfg', 'Pawang Hantu');
+INSERT INTO `users` (`id`, `username`, `password`) VALUES
+(1, 'siswa', '12345'),
+(2, 'guru', '12345'),
+(3, 'bukan_ajis', '12345'),
+(4, 'mario', '12345'),
+(5, 'luigi', 'asdfg');
 
 --
 -- Indexes for dumped tables
