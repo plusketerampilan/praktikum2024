@@ -3,7 +3,7 @@ require_once 'koneksi.php';
 
 // cek apakah ada pengiriman data dari formulir.php
 if (isset($_POST['username'])) {
-    $cari_username_query = "SELECT id, username, password FROM users WHERE username = '$_POST[username]'";
+    $cari_username_query = "SELECT id, username, nama, password FROM users WHERE username = '$_POST[username]'";
     $cari_username       = mysqli_query($koneksi_db, $cari_username_query);
 
     // Cek jumlah data yang didapat dari database
@@ -21,7 +21,7 @@ if (isset($_POST['username'])) {
         // silahkan sesuaikan proses pengecekan password disini
         if ($_POST['password'] === $password) {
             setcookie('login', true, time() + 3600);
-            setcookie('nama', 'Nama Siswa', time() + 3600);
+            setcookie('nama', $data_user['nama'], time() + 3600);
             header('Location: dashboard.php');
         } else {
             echo 'password salah';
